@@ -1,0 +1,35 @@
+[
+    {
+        "model": "web_lib.Author",
+        "pk": 7,
+        "fields": {
+            "name": "Shamu",
+            "age": 10,
+            "email": "Shamu@mail.ru",
+            "lit_type": "c"
+        }
+    },
+
+    {
+        "model": "web_lib.Book",
+        "pk": 11,
+        "fields": {
+            "title": "book_11",
+            "description": "Desc 11",
+            "amount_pages": 132,
+            "published": "2022-06-09 14:17:43.069291",
+            "author": 7
+        }
+    },
+    {
+        "model": "web_lib.Book",
+        "pk": 12,
+        "fields": {
+            "title": "book_12",
+            "description": "Desc 12",
+            "amount_pages": 132,
+            "published": "2022-06-09 14:18:33.069291",
+            "author": 7
+        }
+    }
+]

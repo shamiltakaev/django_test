@@ -1,7 +1,11 @@
+import datetime
+datetime.datetime.now()
+
 import uuid
 
 from django.db import models
 from django.core import validators
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -19,7 +23,8 @@ class Author(models.Model):
 
     name = models.CharField(verbose_name="Имя автора",
                             max_length=200,
-                            validators=[validators.RegexValidator(r"\D+", message="Че ты делаешь?")]
+                            validators=[validators.RegexValidator(
+                                r"\D+", message="Че ты делаешь?")]
                             )
     age = models.PositiveSmallIntegerField(verbose_name="Возраст")
 
@@ -36,7 +41,6 @@ class Author(models.Model):
     def test_hello(self):
         return "Hello World"
 
-    
     test_hello.short_description = "Тестовая функция"
 
 
@@ -45,8 +49,7 @@ class Book(models.Model):
     class Meta:
         get_latest_by = "published"
 
-
-    title = models.CharField(max_length=200, 
+    title = models.CharField(max_length=200,
                              verbose_name="Название книги")
     description = models.TextField()
     amount_pages = models.IntegerField()
@@ -55,3 +58,27 @@ class Book(models.Model):
 
     def __str__(self) -> str:
         return f"{self.title} \n-> {self.description}"
+
+
+class ExtUser(models.Model):
+    desc = models.CharField(max_length=200)
+    is_logged = models.BooleanField(default=True)
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self) -> str:
+        return f"{self.desc}"
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self) -> str:
+        return f"{self.name}"
+
+
+class Store(models.Model):
+    name = models.CharField(max_length=50)
+    products = models.ManyToManyField(Product, related_name="stores")
+
+    def __str__(self) -> str:
+        return f"{self.name}"
