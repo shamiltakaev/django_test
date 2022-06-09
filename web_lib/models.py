@@ -1,6 +1,3 @@
-import datetime
-datetime.datetime.now()
-
 import uuid
 
 from django.db import models
@@ -57,7 +54,7 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return f"{self.title} \n-> {self.description}"
+        return f"{self.title} -> {self.description}"
 
 
 class ExtUser(models.Model):

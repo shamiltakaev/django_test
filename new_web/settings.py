@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "django_extensions",
     'service.apps.ServiceConfig',
     "web_lib.apps.WebLibConfig"
 ]
