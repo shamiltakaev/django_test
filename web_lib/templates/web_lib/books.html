@@ -2,10 +2,9 @@
 
 
 {% block content %} 
-    <h1>Authors</h1>
-
-    <p>Authors</p>
-    <div class="books-style">
+    
+    <div class="container">
+        <h1>Books</h1>
         {% if books %} 
             {% for book in books %}    
                 <p style="white-space: pre;">Название книги:   {{ book.title }}</p>
