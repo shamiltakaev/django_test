@@ -1,12 +1,19 @@
 from django.contrib import admin
+from django.utils.html import format_html
 from .models import Author, Book, Product, Store, ExtUser
 # Register your models here.
 
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ["name", "age", "email", "lit_type"]
+    list_display = ["name", "age", "email", "lit_type", "info"]
     fields = ["name", "age", "email", "lit_type"]
+    change_list_template = "button.html"
+
+    def info(self, obj):
+        return format_html("<br>".join(obj.info() ))
+
+    info.short_description = "Инфо"
 
 
 @admin.register(Book)

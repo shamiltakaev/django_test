@@ -13,9 +13,9 @@ class Author(models.Model):
         ordering = ("name", "age")
 
     LIT_TYPES = (
-        ("а", "Зарубежная"),
-        ("б", "Фантастика"),
-        ("в", "Фэнтези")
+        ("a", "Зарубежная"),
+        ("b", "Фантастика"),
+        ("c", "Фэнтези")
     )
 
     name = models.CharField(verbose_name="Имя автора",
@@ -31,6 +31,13 @@ class Author(models.Model):
     lit_type = models.CharField(verbose_name="Жанр литературы",
                                 max_length=50,
                                 choices=LIT_TYPES, default="a")
+
+    def info(self):
+        name = f"Name: {self.name}"
+        age = f"Age: {self.age}"
+        print(dir(self))
+        lit_type = f"Type: {self.get_lit_type_display()}"
+        return [name, age, lit_type]
 
     def __str__(self) -> str:
         return f"{self.name} -> {self.age} -> {self.email}"
