@@ -1,0 +1,23 @@
+{% extends "web_lib/main.html" %} 
+
+
+{% block content %} 
+    <h1>Authors</h1>
+
+    <p>Authors</p>
+    <div>
+        {% if books %} 
+            {% for book in books %}    
+                <p style="white-space: pre;">Название книги:   {{ book.title }}</p>
+                <p>Описание книги: {{ book.description }}</p>
+                <p>Опубликовано: {{ book.published|date:"d.m.Y" }}g.</p>
+                <p>Автор книги: {{ book.author.name }}</p>
+                <hr>
+            {% endfor %}
+        {% else %} 
+            <p>No authors</p>
+        {% endif %}
+    </div>
+
+
+{% endblock %}
