@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Lib</title>
+    <link rel="stylesheet" href="{% static 'web_lib/css/main.css' %}">
 </head>
 <body>
-    <h1>Welcom to Web Lib Blog</h1>
+    <h1>Welcome to Web Lib Blog</h1>
     <p>Lorem ipsum dolor sit anet connectors adipicing elit.</p>
+    <!-- {% url 'about' as about_url %} -->
+    <a href="{% url 'about' %}">Show About</a>
 
     {% block content  %}
 

@@ -11,3 +11,7 @@ def authors(request):
 def books(request):
     data = {"books": Book.objects.all()}
     return render(request, "web_lib/books.html", context=data)
+
+def about(request):
+    
+    return render(request, "web_lib/about.html")
